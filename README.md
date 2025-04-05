@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🚀 Graph Algorithms – System Programming 2, Exercise 1
 
 ## 📘 Overview
@@ -105,3 +106,7 @@ make valgrind
 **Aviv Oz**  
 📧 avivoz4@gmail.com  
 🎓 Ariel University – System Programming 2
+=======
+# ex1-graph-algorithms
+Graph algorithms implemented in C++ using custom data structures (no STL)
+>>>>>>> fe667f82ff13507d4c5c4a0ea855b5fcf208115f
