@@ -1,3 +1,5 @@
+// Author: avivoz4@gmail.com
+
 #pragma once
 
 namespace graph {

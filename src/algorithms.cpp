@@ -1,10 +1,12 @@
-#include "../include/Algorithms.hpp"
-#include "../include/Utils.hpp"
-#include "../include/Graph.hpp"
-#include "../include/PriorityQueue.hpp"
-#include "../include/UnionFind.hpp"
-#include "../include/Queue.hpp"
-#include "../include/List.hpp"
+// Author: avivoz4@gmail.com
+
+#include "../include/algorithms.hpp"
+#include "../include/utils.hpp"
+#include "../include/graph.hpp"
+#include "../include/priority_queue.hpp"
+#include "../include/union_find.hpp"
+#include "../include/queue.hpp"
+#include "../include/list.hpp"
 
 #include <stdexcept>
 #include <climits>
@@ -61,7 +63,9 @@ namespace graph {
     }
 
     Graph Algorithms::dfs(const Graph& g, int sourceVertex) {
+
         checkGraphNotEmpty(g);
+
         checkValidVertex(g, sourceVertex);
 
         int n = g.getNumOfVertices();
@@ -75,7 +79,9 @@ namespace graph {
     }
 
     Graph Algorithms::dijkstra(const Graph& g, int sourceVertex) {
+
         checkGraphNotEmpty(g);
+
         checkValidVertex(g, sourceVertex);
 
         int n = g.getNumOfVertices();
@@ -87,7 +93,7 @@ namespace graph {
         }
         distance[sourceVertex] = 0;
 
-        MinHeap heap(n);
+        PriorityQueue heap(n);
         for (int i = 0; i < n; ++i) {
             heap.insert(i, distance[i]);
         }
@@ -95,6 +101,10 @@ namespace graph {
         while (!heap.isEmpty()) {
             HeapNode current = heap.extractMin();
             int u = current.vertex;
+
+            if (distance[u] == INT_MAX) {
+                break;
+            }
 
             const List<Edge>& neighbors = g.getAdjacency(u);
             List<Edge>::Node* node = neighbors.getHead();
@@ -134,7 +144,7 @@ namespace graph {
         }
 
         key[0] = 0;
-        MinHeap heap(n);
+        PriorityQueue heap(n);
         for (int i = 0; i < n; ++i) {
             heap.insert(i, key[i]);
         }

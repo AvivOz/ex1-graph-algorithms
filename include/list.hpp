@@ -1,3 +1,5 @@
+// Author: avivoz4@gmail.com
+
 #pragma once
 #include <iostream>
 
@@ -30,6 +32,7 @@ namespace graph {
         };
 
         Node* head; ///< Pointer to the first node in the list.
+        int size;   ///< Number of elements in the list.
 
         /**
          * @brief Constructs an empty list.
@@ -71,12 +74,27 @@ namespace graph {
         Node* getHead() const {
             return head;
         }
+
+        /**
+         * @brief Returns the number of elements in the list.
+         * 
+         * @return The size of the list.
+         */
+        int getSize() const;
+
+        /**
+         * @brief Checks if the list contains the given value.
+         * 
+         * @param value The value to check.
+         * @return true if the value is found in the list, false otherwise.
+         */
+        bool contains(const T& value) const;
     };
 
     // ---- Implementation ----
 
     template<typename T> 
-    List<T>::List() : head(nullptr) {}
+    List<T>::List() : head(nullptr), size(0) {}
 
     template<typename T>
     List<T>::~List() {
@@ -100,6 +118,7 @@ namespace graph {
             }
             current->next = newNode;
         }
+        size++;  // Increment the size of the list when a new element is added.
     }
 
     template<typename T>
@@ -110,6 +129,7 @@ namespace graph {
             Node* temp = head;
             head = head->next;
             delete temp;
+            size--;  // Decrement the size after removing an element.
             return true;
         }
 
@@ -119,6 +139,7 @@ namespace graph {
             if (next->data == value) {
                 current->next = next->next;
                 delete next;
+                size--;  // Decrement the size after removing an element.
                 return true;
             }
             current = next;
@@ -134,6 +155,23 @@ namespace graph {
             std::cout << current->data << " ";
             current = current->next;
         }
+    }
+
+    template <typename T>
+    int List<T>::getSize() const {
+        return size;
+    }
+
+    template <typename T>
+    bool List<T>::contains(const T& value) const {
+        Node* current = head;
+        while (current != nullptr) {
+            if (current->data == value) {  // Check if the current node's data matches the value.
+                return true;
+            }
+            current = current->next;
+        }
+        return false;
     }
 
 }

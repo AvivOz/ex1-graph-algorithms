@@ -1,5 +1,7 @@
+// Author: avivoz4@gmail.com
+
 #pragma once
-#include "Graph.hpp"
+#include "graph.hpp"
 #include <stdexcept>
 
 namespace graph {

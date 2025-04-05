@@ -1,5 +1,8 @@
+// Author: avivoz4@gmail.com
+
 #pragma once
-#include "List.hpp"
+#include <iostream>
+#include "list.hpp"
 
 namespace graph {
 
@@ -20,17 +23,6 @@ namespace graph {
     };
 
     /**
-     * @brief Output stream operator to print Edge objects in the format: (dest, weight)
-     * @param os The output stream.
-     * @param edge The edge to print.
-     * @return Reference to the output stream.
-     */
-    inline std::ostream& operator<<(std::ostream& os, const Edge& edge) {
-        os << "(" << edge.dest << ", " << edge.weight << ")";
-        return os;
-    }
-
-    /**
      * @brief Represents a graph using an adjacency list.
      */
     class Graph {
@@ -39,7 +31,6 @@ namespace graph {
         List<Edge>* adjacencyList; ///< Array of adjacency lists: adjacencyList[i] holds all edges from vertex i.
 
     public:
-
         /**
          * @brief Constructs a graph with the given number of vertices.
          * 
@@ -78,9 +69,13 @@ namespace graph {
         void removeEdge(int sourceVertex, int destinationVertex); 
 
         /**
-         * @brief Prints the adjacency list representation of the graph.
+         * @brief Outputs the contents of the graph to an output stream.
+         * 
+         * Prints the adjacency list of each vertex.
+         * 
+         * @param os The output stream (e.g., std::cout or std::ostringstream).
          */
-        void print_graph() const; 
+        void print_graph(std::ostream& os) const;
 
         /**
          * @brief Returns the number of vertices in the graph.

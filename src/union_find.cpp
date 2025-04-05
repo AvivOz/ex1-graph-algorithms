@@ -1,4 +1,7 @@
-#include "../include/UnionFind.hpp"
+// Author: avivoz4@gmail.com
+
+#include "../include/union_find.hpp"
+#include <stdexcept>
 
 namespace graph {
 
@@ -18,6 +21,11 @@ namespace graph {
     }
 
     int UnionFind::find(int x) {
+
+        if (x < 0 || x >= size) {
+            throw std::out_of_range("Element index out of range");
+        }
+
         if (parent[x] != x) {
             parent[x] = find(parent[x]); // Path compression
         }
@@ -25,6 +33,11 @@ namespace graph {
     }
 
     void UnionFind::unionSets(int x, int y) {
+
+        if (x < 0 || x >= size || y < 0 || y >= size) {
+            throw std::out_of_range("Element index out of range");
+        }
+
         int rootX = find(x);
         int rootY = find(y);
 
