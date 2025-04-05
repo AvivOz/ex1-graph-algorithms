@@ -105,6 +105,3 @@ make valgrind
 **Aviv Oz**  
 📧 avivoz4@gmail.com  
 🎓 Ariel University – System Programming 2
-=======
-# ex1-graph-algorithms
-Graph algorithms implemented in C++ using custom data structures (no STL)
